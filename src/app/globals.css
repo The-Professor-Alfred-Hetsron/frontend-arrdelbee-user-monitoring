@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'LOVELACE';
-  src: url('/assets/fonts/Lovelace-Bold-Italic.otf');
+  src: url('/assets/fonts/Lovelace-Text-Regular.otf');
 }
 
 @font-face {
@@ -20,4 +20,39 @@
 @font-face {
   font-family: 'MONTSERRAT';
   src: url('/assets/fonts/Montserrat-Bold.ttf');
+}
+
+h1{
+  @apply font-lovelace font-bold;
+}
+
+h2{
+  @apply font-catamaran;
+}
+
+h3{
+  @apply font-montserrat;
+}
+
+.scrollbar-hide::-webkit-scrollbar{
+  display: none;
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-grayToneStroke;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-primary-blue;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-google-blue;
 }

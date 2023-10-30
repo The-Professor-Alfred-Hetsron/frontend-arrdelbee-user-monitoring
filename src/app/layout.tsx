@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
-import { appName, appTabName, appDescription } from '@/constants/config'
-
-const inter = Inter({ subsets: ['latin'] })
+import { appName, appTabName, appDescription, themeColor, keywords } from '@/constants/config'
 
 export const metadata: Metadata = {
+  applicationName:appName,
   title: appTabName,
   description: `${appName}, ${appDescription}`,
+  themeColor: themeColor,
+  generator:"Next.js",
+  keywords: keywords,
 }
 
 export default function RootLayout({
@@ -26,7 +27,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c"/>
         <meta name="theme-color" content="#356BB3"/>
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className="m-0 p-0 font-poppins relative selection:bg-tertiary-lightYellow selection:text-primary-blue">{children}</body>
     </html>
   )
 }
