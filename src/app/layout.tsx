@@ -6,7 +6,11 @@ export const metadata: Metadata = {
   applicationName:appName,
   title: appTabName,
   description: `${appName}, ${appDescription}`,
-  themeColor: themeColor,
+  colorScheme:"light",
+  themeColor: [
+        { media: "(prefers-color-scheme: dark)", color: themeColor },
+        { media: "(prefers-color-scheme: light)", color: themeColor }
+      ],
   generator:"Next.js",
   keywords: keywords,
 }
