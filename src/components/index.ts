@@ -1,0 +1,1 @@
+// export {default as CompononentName } from "./CompononentName.tsx"
