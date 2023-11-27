@@ -1,4 +1,4 @@
-export default function Home() {
+export default function Root() {
   return (
     <main className="min-w-screen min-h-screen flex flex-col gap-8 items-center justify-center">
       Landing Page
