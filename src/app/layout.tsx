@@ -1,18 +1,18 @@
 import type { Metadata } from 'next'
 import './globals.css'
-import { appName, appTabName, appDescription, themeColor, keywords } from '@/constants/config'
+import { APP_NAME, APP_TAB_NAME, APP_DESCRIPTION, THEME_COLOR, KEYWORDS } from '@/constants/config'
 
 export const metadata: Metadata = {
-  applicationName:appName,
-  title: appTabName,
-  description: `${appName}, ${appDescription}`,
+  applicationName:APP_NAME,
+  title: APP_TAB_NAME,
+  description: `${APP_NAME}, ${APP_DESCRIPTION}`,
   colorScheme:"light",
   themeColor: [
-        { media: "(prefers-color-scheme: dark)", color: themeColor },
-        { media: "(prefers-color-scheme: light)", color: themeColor }
+        { media: "(prefers-color-scheme: dark)", color: THEME_COLOR },
+        { media: "(prefers-color-scheme: light)", color: THEME_COLOR }
       ],
   generator:"Next.js",
-  keywords: keywords,
+  keywords: KEYWORDS,
 }
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c"/>
         <meta name="theme-color" content="#356BB3"/>
       </head>
-      <body className="m-0 p-0 font-poppins relative selection:bg-tertiary-lightYellow selection:text-primary-blue">{children}</body>
+      <body className="m-0 p-0 font-poppins relative bg-background-white selection:bg-tertiary-lightYellow selection:text-primary-blue">{children}</body>
     </html>
   )
 }

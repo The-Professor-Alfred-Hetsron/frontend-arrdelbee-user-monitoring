@@ -25,6 +25,10 @@ const config: Config = {
         'grayTone2': '#6C768A',
         'grayTone3': '#A0ABC0',
         'textDarkTone': '#23252F',
+
+        'background-white': '#F6F6F8',
+        'logo-yellow':'#F69319',
+        'white-layout': '#E5EAF0CC',
       },
       dropShadow: {
         '3xl': '0 35px 35px rgba(0, 0, 0, 0.25)',

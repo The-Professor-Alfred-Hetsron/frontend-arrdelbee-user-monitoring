@@ -1,14 +1,16 @@
-export const appName:string = "ArrdelBee"
+export const APP_NAME:string = "ArrdelBee"
 
-export const appTabName:string = "ArrdelBee - Territorial Digital"
+export const APP_SUB_NAME:string = "Territorial Digital"
 
-export const appDescription:string = "Plateforme de solutions numériques de gestion des données des collectivités territoriales décentralisées dans toutes ses composantes pour un développement durable des territoires."
+export const APP_TAB_NAME:string = "ArrdelBee - Territorial Digital"
 
-export const themeColor:string = "#356BB3"
+export const APP_DESCRIPTION:string = "Plateforme de solutions numériques de gestion des données des collectivités territoriales décentralisées dans toutes ses composantes pour un développement durable des territoires."
 
-export const keywords:string = `${appName}, Territorial Digital, Collectivité Territoriale Décentralisée(CTD), Objectif de Développement Durable(ODD), Grille d’analyse de Développement Durable(GADD), Indicateurs Objectivement Vérifiables(IOV), Système d’Information Géographique(SIG), Photogrammétrie aérienne`;
+export const THEME_COLOR:string = "#356BB3"
 
-export const contactInfo: Array<{label:string, value:string}> = [
+export const KEYWORDS:string = `${APP_NAME}, ${APP_SUB_NAME}, Collectivité Territoriale Décentralisée(CTD), Objectif de Développement Durable(ODD), Grille d’analyse de Développement Durable(GADD), Indicateurs Objectivement Vérifiables(IOV), Système d’Information Géographique(SIG), Photogrammétrie aérienne`;
+
+export const CONTACT_INFO: Array<{label:string, value:string}> = [
     {
         label:"site",
         value:"www.arrdel.org"
