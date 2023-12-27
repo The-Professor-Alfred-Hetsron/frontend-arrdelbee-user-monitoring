@@ -17,14 +17,13 @@ export default function DashboardLayout({
 
     return(
       <div className="w-screen h-screen flex flex-row p-3 gap-4">
-      <div className="h-full">
-          {isSideVisible && <SideBar navToogler={setSideVisibility}/>}
-      </div>
-      <div className="h-full w-full flex flex-col gap-4">
+        {isSideVisible && <SideBar navToogler={setSideVisibility}/>}
+
+        <div className="h-full w-full flex flex-col gap-4">
           <Image src="/assets/img/bee-hexagons.png" alt={`${APP_NAME} Hexagons`} width={100} height={100} className='w-[250px] absolute right-0 top-10'/>
           <Header navStatus={isSideVisible} navToogler={setSideVisibility}/>
           {children}
-      </div>
-  </div>
+        </div>
+    </div>
     )
   }

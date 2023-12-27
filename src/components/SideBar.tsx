@@ -41,7 +41,7 @@ const SideBar:React.FC<PropsType> = ({navToogler}) => {
     }
     const PATH_ARRAY: Array<string> = PATHNAME.toLowerCase().split("/")
     return (
-        <div className="w-[300px] h-full lg:w-screen lg:h-screen lg:fixed lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 lg:z-50 lg:inset-0 lg:bg-black/20 lg:backdrop-blur-sm lg:dark:bg-slate-900/80">
+        <div className="w-[300px] h-full lg:p-3 lg:w-screen lg:h-screen lg:fixed lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 lg:z-50 lg:inset-0 lg:bg-black/20 lg:backdrop-blur-sm lg:dark:bg-slate-900/80">
             <button onClick={()=>navToogler(false)} className='text-amber-400 hidden lg:flex lg:absolute lg:right-8 lg:top-8'>
                 <FiX size={32}/>
             </button>
