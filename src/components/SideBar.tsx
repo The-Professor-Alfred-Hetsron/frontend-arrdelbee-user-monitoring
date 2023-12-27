@@ -42,10 +42,10 @@ const SideBar:React.FC<PropsType> = ({navToogler}) => {
     const PATH_ARRAY: Array<string> = PATHNAME.toLowerCase().split("/")
     return (
         <div className="w-[300px] h-full lg:p-3 lg:w-screen lg:h-screen lg:fixed lg:top-0 lg:left-0 lg:right-0 lg:bottom-0 lg:z-50 lg:inset-0 lg:bg-black/20 lg:backdrop-blur-sm lg:dark:bg-slate-900/80">
-            <button onClick={()=>navToogler(false)} className='text-amber-400 hidden lg:flex lg:absolute lg:right-8 lg:top-8'>
+            <button onClick={()=>navToogler(false)} className='text-amber-400 hidden lg:flex lg:absolute lg:right-8 lg:top-8 sm:right-2'>
                 <FiX size={32}/>
             </button>
-            <nav className="w-[300px] h-full p-3 bg-white rounded-2xl shadow drop-shadow-lg flex flex-col justify-start items-center gap-2 animate__animated animate__fadeInLeft">
+            <nav className="w-[300px] sm:w-[90%] h-full p-3 bg-white rounded-2xl shadow drop-shadow-lg flex flex-col justify-start items-center gap-2 animate__animated animate__fadeInLeft">
                 <div className="w-full flex flex-col gap-2 justify-start items-center">
                     <Image src="/assets/img/logo.png" alt={`${APP_NAME} Logo`} width={100} height={100} className='w-[120px] aspect-square'/>
                     <h1 className="text-logo-yellow text-2xl font-bold">{APP_NAME}</h1>

@@ -20,10 +20,10 @@ export default function DashboardLayout({
         {isSideVisible && <SideBar navToogler={setSideVisibility}/>}
 
         <div className="h-full w-full flex flex-col gap-4">
-          <Image src="/assets/img/bee-hexagons.png" alt={`${APP_NAME} Hexagons`} width={100} height={100} className='w-[250px] absolute right-0 top-10'/>
+          <Image src="/assets/img/bee-hexagons.png" alt={`${APP_NAME} Hexagons`} width={100} height={100} className='w-[250px] absolute right-0 top-10 -z-10'/>
           <Header navStatus={isSideVisible} navToogler={setSideVisibility}/>
           {children}
         </div>
-    </div>
+      </div>
     )
   }
