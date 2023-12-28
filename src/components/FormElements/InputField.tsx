@@ -9,10 +9,11 @@ interface PropsTypes{
     type: "text" | "email" | "password",
     defaultValue?: string,
     regex: RegExp,
+    errorMsg: string,
     setInput: (value:SetStateAction<string>)=>void,
 }
 
-const InputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue, regex, setInput}) => {
+const InputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue, regex, errorMsg, setInput}) => {
     const [value, setValue] = useState<string>((defaultValue!=="" && defaultValue!=undefined)? defaultValue:"")
     const [showPWD, setShowPWD] = useState<boolean>(false);
     const [showError, setShowError] = useState<boolean>(false);
@@ -62,7 +63,7 @@ const InputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue
             }
         </div>}
 
-        {showError && <span className="peer-invalid:visible text-google-red">Ce {placeholder} est invalid, bien vouloir entrez une valeur valide</span>}
+        {showError && <span className="peer-invalid:visible text-google-red">{errorMsg}</span>}
 
     </div>
   )

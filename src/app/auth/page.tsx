@@ -10,6 +10,10 @@ import { validateFromRegEx } from "@/utils/form";
 type FormType = "signUp" | "signIn" | "forgotPassword" | "resetPassword" | "successRecovery"
 export default function Auth(){
 
+    const USER_NAME_ERROR_MSG:string = "Ce nom d'utilisateur est invalid, utilisez '-' ou '_' pour les espaces"
+    const EMAIL_ERROR_MSG:string = "Cette adresse e-mail est invalid, bien vouloir entrez une valeur valide"
+    const PASSWORD_ERROR_MSG:string = "Ce mot de passe ne doit pas etre court, doit contenir des valeurs alphanumérique et des caractères spéciaux @#$%^&+=!"
+
     const [email, setEmail] = useState<string>("");
     const [name, setName] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -71,10 +75,10 @@ export default function Auth(){
 
                     {formType === "signUp" && <>
                         <div className="w-full h-full flex flex-col gap-4 sm:gap-2 justify-center items-center">
-                            <InputField label="Entrez votre adresse e-mail" placeholder="E-mail" type="email" regex={EMAIL_REGEX} setInput={setEmail}/>
-                            <InputField label="Entrez votre nom d'utilisateur" placeholder="Nom d'Utilisateur" type="text" regex={USER_NAME_REGEX} setInput={setName}/>
-                            <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword}/>
-                            <InputField label="Confirmez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setConfirmPassword}/>
+                            <InputField label="Entrez votre adresse e-mail" placeholder="E-mail" type="email" regex={EMAIL_REGEX} setInput={setEmail} errorMsg={EMAIL_ERROR_MSG}/>
+                            <InputField label="Entrez votre nom d'utilisateur" placeholder="Nom d'Utilisateur" type="text" regex={USER_NAME_REGEX} setInput={setName} errorMsg={USER_NAME_ERROR_MSG}/>
+                            <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword} errorMsg={PASSWORD_ERROR_MSG}/>
+                            <InputField label="Confirmez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setConfirmPassword} errorMsg={PASSWORD_ERROR_MSG}/>
                         </div>
                         
                         <button type="submit" className="text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">S'Inscrire</button>
@@ -82,8 +86,8 @@ export default function Auth(){
 
                     {formType === "signIn" && <>
                         <div className="w-full h-full flex flex-col gap-4 sm:gap-2 justify-center items-center">
-                            <InputField label="Entrez votre nom d'utilisateur ou adresse e-mail" placeholder="Nom d'Utilisateur ou E-mail" type="text" regex={USER_NAME_REGEX} setInput={setName}/>
-                            <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword}/>
+                            <InputField label="Entrez votre nom d'utilisateur ou adresse e-mail" placeholder="Nom d'Utilisateur ou E-mail" type="text" regex={USER_NAME_REGEX} setInput={setName} errorMsg={EMAIL_ERROR_MSG}/>
+                            <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword} errorMsg={PASSWORD_ERROR_MSG}/>
                             <div className="w-full flex flex-row justify-end items-end">
                                 <button onClick={()=>{initInput("forgotPassword")}} className="text-primary-blue hover:text-secondary-yellow text-left">Mot de Passe oublié?</button>
                             </div>
@@ -99,7 +103,7 @@ export default function Auth(){
                         <span className="">Veuillez saisir votre adresse e-mail pour recevoir un lien de réinitialisation de mot de passe dans votre boîte de réception.</span>
                     </div>
                     <div className="w-full flex flex-col gap-4 sm:gap-2 justify-center items-center">
-                        <InputField label="Entrez votre adresse e-mail" placeholder="E-mail" type="email" regex={EMAIL_REGEX} setInput={setEmail}/>
+                        <InputField label="Entrez votre adresse e-mail" placeholder="E-mail" type="email" regex={EMAIL_REGEX} setInput={setEmail} errorMsg={EMAIL_ERROR_MSG}/>
                         <button type="submit" className="w-full text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">Envoyer le lien</button>
                         <div className="w-full flex flex-row justify-center items-center">
                             <button onClick={()=>{initInput("signIn")}} className="text-primary-blue hover:text-secondary-yellow text-left">Retour à la connexion</button>
@@ -113,8 +117,8 @@ export default function Auth(){
                         <span className="">Veuillez saisir votre nouveau mot de passe</span>
                     </div>
                     <div className="w-full h-full flex flex-col gap-4 sm:gap-2 justify-evenly items-center">
-                        <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword}/>
-                        <InputField label="Confirmez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setConfirmPassword}/>
+                        <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword} errorMsg={PASSWORD_ERROR_MSG}/>
+                        <InputField label="Confirmez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setConfirmPassword} errorMsg={PASSWORD_ERROR_MSG}/>
                         <button type="submit" className="w-full text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">Reinitialliser</button>
                     </div>
                 </form>}
