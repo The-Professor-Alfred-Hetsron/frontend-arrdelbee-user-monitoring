@@ -10,10 +10,11 @@ interface PropsTypes{
     defaultValue?: string,
     regex: RegExp,
     errorMsg: string,
+    testValue?: string,
     setInput: (value:SetStateAction<string>)=>void,
 }
 
-const InputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue, regex, errorMsg, setInput}) => {
+const InputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue, regex, errorMsg, testValue, setInput}) => {
     const [value, setValue] = useState<string>((defaultValue!=="" && defaultValue!=undefined)? defaultValue:"")
     const [showPWD, setShowPWD] = useState<boolean>(false);
     const [showError, setShowError] = useState<boolean>(false);
@@ -21,12 +22,10 @@ const InputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue
 
     const handleOnChange = (val:string) => {
         setValue(val)
-        console.log("Input = ",val)
-        if(val !== ""){
-            const VALID_FLAG:boolean = validateFromRegEx(val, regex, setInput)
-            setShowError(!VALID_FLAG)
-        }
-        }
+        setInput(val)
+        const VALID_FLAG:boolean = validateFromRegEx(val, regex, setInput) && (testValue!=undefined? testValue === value: true)
+        setShowError(!VALID_FLAG)
+    }
   return (
     <div className='w-full flex flex-col gap-1'>
         <label className="lg:text-sm font-medium">{label}</label>
@@ -63,7 +62,7 @@ const InputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue
             }
         </div>}
 
-        {showError && <span className="peer-invalid:visible text-google-red">{errorMsg}</span>}
+        {showError && <span className="peer-invalid:visible text-google-red text-sm">{errorMsg}</span>}
 
     </div>
   )
