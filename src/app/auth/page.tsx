@@ -1,7 +1,132 @@
+'use client'
+
+import React, { SetStateAction, useState } from "react";
+import Image from 'next/image'
+import { APP_NAME } from "@/constants/config";
+import { InputField } from "@/components";
+import { USER_NAME_REGEX, EMAIL_REGEX, PASSWORD_REGEX } from "@/constants/form";
+import { validateFromRegEx } from "@/utils/form";
+
+type FormType = "signUp" | "signIn" | "forgotPassword" | "resetPassword" | "successRecovery"
 export default function Auth(){
+
+    const [email, setEmail] = useState<string>("");
+    const [name, setName] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [confirmPassword, setConfirmPassword] = useState<string>("");
+
+    const [formType, setFormType] = useState<FormType>("signUp");
+    const [isFormValid, setFormValidity] = useState<boolean>(false);
+
+    const initInput = (type: FormType) => {
+        setFormType(type)
+        setName("")
+        setEmail("")
+        setPassword("")
+        setConfirmPassword("")
+        setFormValidity(false)
+    }
+
+    const submitRegisterLogin = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+    }
+
+    const submitMagicLink = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        initInput("resetPassword")
+    }
+
+    const submitNewCredentials = (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        initInput("successRecovery")
+    }
+
     return(
-        <div className="">
+        <div className="w-screen h-screen relative bg-[url(/assets/img/auth-bg-img.png)] bg-cover bg-center lg:bg-left sm:flex sm:flex-col sm:justify-center sm:items-center">
             {/* Put your Content Here For Login SignUp and Forgot Password*/}
+            
+            <Image src="/assets/img/auth-logo.png" alt={`${APP_NAME} Logo`} className="w-[300px] lg:w-[200px] aspect-auto rounded-lg drop-shadow-2xl shadow absolute left-8 top-8 lg:left-2 lg:top-2 sm:hidden" width={300} height={300}/>
+            <Image src="/assets/img/logo.png" alt={`${APP_NAME} Logo`} className="w-[300px] sm:relative tablet:hidden" width={300} height={300}/>
+
+            <div className="w-[600px] h-[750px] lg:w-screen lg:h-screen lg:p-20 sm:p-3 flex flex-col justify-center items-center absolute right-28 top-10 lg:right-0 lg:top-0">
+                
+                {(formType === "signUp" || formType === "signIn") && <form onSubmit={submitRegisterLogin} className="w-full h-full bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col">
+                    <div className="w-full flex flex-row sm:flex-col flex-1">
+                        <div className="grow flex flex-col">
+                            <div className="w-[300px] flex flex-row gap-2">
+                                <span>Bienvenue sur</span>
+                                <h1 className="text-secondary-yellow uppercase">{APP_NAME}</h1>
+                            </div>
+                            <span className="text-4xl font-bold capitalize">{formType === "signUp" ? "Inscription": "Connexion"}</span>
+                        </div>
+                        {formType === "signUp" &&<div className="flex flex-col text-left justify-start sm:items-start items-end text-sm">
+                            <span className="text-right">Vous avez un Compte?</span>
+                            <button onClick={()=>{initInput("signIn")}} className="text-secondary-yellow hover:text-primary-blue text-left">Connectez-vous</button>
+                        </div>}
+                        {formType === "signIn" &&<div className="flex flex-col text-left justify-start sm:items-start items-end text-sm">
+                            <span className="text-right">Vous n'avez pas de Compte?</span>
+                            <button onClick={()=>{initInput("signUp")}} className="text-secondary-yellow hover:text-primary-blue text-left">Inscrivez-vous</button>
+                        </div>}
+                    </div>
+
+                    {formType === "signUp" && <>
+                        <div className="w-full h-full flex flex-col gap-4 sm:gap-2 justify-center items-center">
+                            <InputField label="Entrez votre adresse e-mail" placeholder="E-mail" type="email" regex={EMAIL_REGEX} setInput={setEmail}/>
+                            <InputField label="Entrez votre nom d'utilisateur" placeholder="Nom d'Utilisateur" type="text" regex={USER_NAME_REGEX} setInput={setName}/>
+                            <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword}/>
+                            <InputField label="Confirmez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setConfirmPassword}/>
+                        </div>
+                        
+                        <button type="submit" className="text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">S'Inscrire</button>
+                    </>}
+
+                    {formType === "signIn" && <>
+                        <div className="w-full h-full flex flex-col gap-4 sm:gap-2 justify-center items-center">
+                            <InputField label="Entrez votre nom d'utilisateur ou adresse e-mail" placeholder="Nom d'Utilisateur ou E-mail" type="text" regex={USER_NAME_REGEX} setInput={setName}/>
+                            <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword}/>
+                            <div className="w-full flex flex-row justify-end items-end">
+                                <button onClick={()=>{initInput("forgotPassword")}} className="text-primary-blue hover:text-secondary-yellow text-left">Mot de Passe oublié?</button>
+                            </div>
+                        </div>
+                        <button type="submit" className="text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">Se Connecter</button>
+                    </>}
+
+                </form>}
+
+                {formType === "forgotPassword" &&<form onSubmit={submitMagicLink} className="w-full h-[70%] bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col gap-2 justify-evenly">
+                    <div className="w-full flex flex-col gap-4">
+                        <span className="text-4xl font-bold capitalize">Mot de Passe Oublié ?</span>
+                        <span className="">Veuillez saisir votre adresse e-mail pour recevoir un lien de réinitialisation de mot de passe dans votre boîte de réception.</span>
+                    </div>
+                    <div className="w-full flex flex-col gap-4 sm:gap-2 justify-center items-center">
+                        <InputField label="Entrez votre adresse e-mail" placeholder="E-mail" type="email" regex={EMAIL_REGEX} setInput={setEmail}/>
+                        <button type="submit" className="w-full text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">Envoyer le lien</button>
+                        <div className="w-full flex flex-row justify-center items-center">
+                            <button onClick={()=>{initInput("signIn")}} className="text-primary-blue hover:text-secondary-yellow text-left">Retour à la connexion</button>
+                        </div>
+                    </div>
+                </form>}
+
+                {formType === "resetPassword" &&<form onSubmit={submitNewCredentials} className="w-full h-full bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col">
+                    <div className="w-full flex flex-col gap-4">
+                        <span className="text-4xl font-bold capitalize">Reinitialliser votre Mot de Passe</span>
+                        <span className="">Veuillez saisir votre nouveau mot de passe</span>
+                    </div>
+                    <div className="w-full h-full flex flex-col gap-4 sm:gap-2 justify-evenly items-center">
+                        <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword}/>
+                        <InputField label="Confirmez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setConfirmPassword}/>
+                        <button type="submit" className="w-full text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">Reinitialliser</button>
+                    </div>
+                </form>}
+
+                {formType === "successRecovery" &&<div className="w-full h-[60%] bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col justify-between">
+                    <div className="w-full flex flex-col gap-6">
+                        <span className="text-4xl font-bold capitalize">Reinitialisation Reussi</span>
+                        <span className="">La réinitialisation de votre mot de passe a été effectuée avec succès.</span>
+                    </div>
+                        <button onClick={()=>{initInput("signIn")}} className="w-full mb-5 text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">Se Connecter</button>
+                </div>}
+            </div>
         </div>
     )
 }
