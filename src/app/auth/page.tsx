@@ -106,7 +106,7 @@ export default function Auth(){
 
                     {formType === "signIn" && <>
                         <div className="w-full h-full flex flex-col gap-4 sm:gap-2 justify-center items-center">
-                            <InputField label="Entrez votre nom d'utilisateur ou adresse e-mail" placeholder="Nom d'Utilisateur ou E-mail" type="text" regex={USER_NAME_REGEX} setInput={setName} errorMsg={EMAIL_ERROR_MSG}/>
+                            <InputField label="Entrez votre nom d'utilisateur" placeholder="Nom d'Utilisateur" type="text" regex={USER_NAME_REGEX} setInput={setName} errorMsg={USER_NAME_ERROR_MSG}/>
                             <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword} errorMsg={PASSWORD_ERROR_MSG}/>
                             <div className="w-full flex flex-row justify-end items-end">
                                 <button onClick={()=>{initInput("forgotPassword")}} className="text-primary-blue hover:text-secondary-yellow text-left">Mot de Passe oublié?</button>
