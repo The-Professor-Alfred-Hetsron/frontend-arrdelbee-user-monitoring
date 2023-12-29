@@ -72,6 +72,18 @@ const config: Config = {
       },
     },
     screens: {
+      'tablet': '640px',
+      // => @media (min-width: 640px) { ... }
+      
+      'laptop': '1024px',
+      // => @media (min-width: 1024px) { ... }
+
+      'desktop': '1280px',
+      // => @media (min-width: 1280px) { ... }
+
+      '3xl': {'max': '1600px'},
+      // => @media (max-width: 1600px) { ... }
+
       '2xl': {'max': '1535px'},
       // => @media (max-width: 1535px) { ... }
 
@@ -86,6 +98,9 @@ const config: Config = {
 
       'sm': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
+
+      'xs': {'max': '475px'},
+      // => @media (max-width: 475px) { ... }
     },
   },
   plugins: [],
