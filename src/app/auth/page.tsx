@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { APP_NAME } from "@/constants/config";
 import { InputField } from "@/components";
 import { USER_NAME_REGEX, EMAIL_REGEX, PASSWORD_REGEX } from "@/constants/form";
-import { validateFromRegEx } from "@/utils/form";
+import { validateFromRegEx } from "@/utils/tools";
 import { useRouter } from "next/navigation";
 import { Span } from "next/dist/trace";
 

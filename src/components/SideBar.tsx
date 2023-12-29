@@ -47,7 +47,7 @@ const SideBar:React.FC<PropsType> = ({navToogler}) => {
             </button>
             <nav className="w-[300px] sm:w-[90%] h-full p-3 bg-white rounded-2xl shadow drop-shadow-lg flex flex-col justify-start items-center gap-2 animate__animated animate__fadeInLeft">
                 <div className="w-full flex flex-col gap-2 justify-start items-center">
-                    <Image src="/assets/img/logo.png" alt={`${APP_NAME} Logo`} width={100} height={100} className='w-[120px] aspect-square'/>
+                    <Image src="/assets/img/logo.png" alt={`${APP_NAME} Logo`} priority width={200} height={200} className='w-[120px] aspect-square'/>
                     <h1 className="text-logo-yellow text-2xl font-bold">{APP_NAME}</h1>
                     <h1 className="text-lg">{APP_SUB_NAME}</h1>
                 </div>
