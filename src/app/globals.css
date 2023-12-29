@@ -38,6 +38,14 @@ h3{
   display: none;
 }
 
+.rounded-scrollbar::-webkit-scrollbar-track{
+  @apply rounded-full
+}
+
+.rounded-scrollbar::-webkit-scrollbar-thumb{
+  @apply rounded-full
+}
+
 ::-webkit-scrollbar {
   width: 15px;
 }

@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { APP_NAME } from "@/constants/config";
 import { InputField } from "@/components";
 import { USER_NAME_REGEX, EMAIL_REGEX, PASSWORD_REGEX } from "@/constants/form";
-import { validateFromRegEx } from "@/utils/form";
+import { validateFromRegEx } from "@/utils/tools";
 import { useRouter } from "next/navigation";
 import { Span } from "next/dist/trace";
 
@@ -88,7 +88,7 @@ export default function Auth(){
                             <button onClick={()=>{initInput("signIn")}} className="text-secondary-yellow hover:text-primary-blue text-left">Connectez-vous</button>
                         </div>}
                         {formType === "signIn" &&<div className="flex flex-col text-left justify-start sm:items-start items-end text-sm">
-                            <span className="text-right">Vous n'avez pas de Compte?</span>
+                            <span className="text-right">Vous n&apos;avez pas de Compte?</span>
                             <button onClick={()=>{initInput("signUp")}} className="text-secondary-yellow hover:text-primary-blue text-left">Inscrivez-vous</button>
                         </div>}
                     </div>

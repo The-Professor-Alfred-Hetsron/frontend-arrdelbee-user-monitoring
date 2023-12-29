@@ -1,6 +1,7 @@
+'use client'
 import React, { SetStateAction, useState } from 'react'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { validateFromRegEx } from "@/utils/form";
+import { validateFromRegEx } from "@/utils/tools";
 
 
 interface PropsTypes{
@@ -22,9 +23,11 @@ const InputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue
 
     const handleOnChange = (val:string) => {
         setValue(val)
-        setInput(val)
-        const VALID_FLAG:boolean = validateFromRegEx(val, regex, setInput) && (testValue!=undefined? testValue === value: true)
-        setShowError(!VALID_FLAG)
+        if(val != ""){
+            setInput(val)
+            const VALID_FLAG:boolean = validateFromRegEx(val, regex, setInput) && (testValue!=undefined? testValue === value: true)
+            setShowError(!VALID_FLAG)
+        }
     }
   return (
     <div className='w-full flex flex-col gap-1'>
