@@ -5,9 +5,10 @@ import {
     AvatarCard,
     CustomInputField, 
     CustomDropDown,
-    CustomDateInput
+    CustomDateInput,
+    PaymentCard
 } from "@/components"
-import { UserProfile } from "@/types/user";
+import { PaymentMethod, UserProfile } from "@/types/user";
 import { DUMMY_USER_PROFILE } from "@/data/dummyUsers";
 import { updateDataFromKey } from "@/utils/tools";
 import { USER_GROUPS, USER_GENDER, LANGUAGES } from "@/constants/user";
@@ -40,7 +41,20 @@ export default function ProfilePage(){
             // Post API Call Here
             
             setApiUserProfile({...displayUserProfile})
+            setDisabled(true)
+            setHasChanged(false)
         }
+    }
+
+    const editPaymentAction = (method: PaymentMethod) =>{
+
+    }
+
+    const removePaymentAction = (index:number) =>{
+        let tempUserProfile: UserProfile = {...displayUserProfile}
+        tempUserProfile.paymentMethods.splice(index,1)
+        setDisplayUserProfile(tempUserProfile)
+        setHasChanged(true)
     }
     
     // useEffect(() => {
@@ -175,6 +189,24 @@ export default function ProfilePage(){
                     defaultValue={displayUserProfile.birthDate}
                     setInput={(value:string)=>{setValue(displayUserProfile,"birthDate",value)}}
                 />
+
+                <div className="w-full flex flex-col gap-2">
+                    <label className="lg:text-sm font-medium">Méthode de Paiement</label>
+                    <div className="flex flex-row gap-2 flex-wrap">
+                        {
+                            displayUserProfile.paymentMethods.map((method:PaymentMethod, index:number)=>{
+                                return <PaymentCard
+                                            key={index}
+                                            disabled={disabled}
+                                            method={method}
+                                            editAction={()=>{editPaymentAction(method)}}
+                                            removeAction={()=>{removePaymentAction(index)}}
+                                        />
+                            })
+                        }
+                    </div>
+                </div>
+
                 <div className="w-full flex flex-row justify-end">
                     {disabled?
                         <button type="button" onClick={()=>{setDisabled(false)}} className="lg:w-full text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 hover:text-tertiary-lightYellow">Modifier</button>

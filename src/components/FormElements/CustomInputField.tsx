@@ -77,7 +77,10 @@ const CustomInputField:React.FC<PropsTypes> = ({label, placeholder, type, defaul
                 {showError && <span className="peer-invalid:visible text-google-red text-sm">{errorMsg}</span>}
             </>:
             <span className='w-full py-3 px-4 rounded-lg text-grayTone2 bg-white'>
-                {value}
+                {type === "password"?
+                    value.split('').map(s=>{return "*"})
+                    :value
+                }
             </span>
         }
 

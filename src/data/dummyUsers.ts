@@ -8,7 +8,22 @@ const DUMMY_PAYMENT_METHODS:Array<PaymentMethod> =[
     },
     {
         type: "Mobile Money",
-        number: "+237675669966",
+        number: "+237675669957",
+        expriresAt: "2030-12-24"
+    },
+    {
+        type: "Visa Card",
+        number: "+237675669941",
+        expriresAt: "2030-12-24"
+    },
+    {
+        type: "Master Card",
+        number: "+237675669648",
+        expriresAt: "2030-12-24"
+    },
+    {
+        type: "PayPal",
+        number: "+237675669987",
         expriresAt: "2030-12-24"
     }
 ]
