@@ -73,7 +73,7 @@ export default function Auth(){
 
             <div className="w-[600px] h-[750px] lg:w-screen lg:h-screen lg:p-20 sm:p-3 flex flex-col justify-center items-center absolute right-28 top-10 lg:right-0 lg:top-0">
                 
-                {(formType === "signUp" || formType === "signIn") && <form onSubmit={submitRegisterLogin} className="w-full h-full bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col">
+                {(formType === "signUp" || formType === "signIn") && <form onSubmit={submitRegisterLogin} className="w-full h-full sm:h-[80%] bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col">
                     <div className="w-full flex flex-row sm:flex-col flex-1">
                         <div className="grow flex flex-col">
                             <div className="w-[300px] flex flex-row gap-2">
@@ -131,7 +131,7 @@ export default function Auth(){
                     </div>
                 </form>}
 
-                {formType === "resetPassword" &&<form onSubmit={submitNewCredentials} className="w-full h-full sm:h-[90%] bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col">
+                {formType === "resetPassword" &&<form onSubmit={submitNewCredentials} className="w-full h-full sm:h-[80%] bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col">
                     <div className="w-full flex flex-col gap-4">
                         <span className="text-4xl font-bold capitalize">Reinitialliser votre Mot de Passe</span>
                         <span className="">Veuillez saisir votre nouveau mot de passe</span>
