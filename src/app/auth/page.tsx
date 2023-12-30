@@ -131,7 +131,7 @@ export default function Auth(){
                     </div>
                 </form>}
 
-                {formType === "resetPassword" &&<form onSubmit={submitNewCredentials} className="w-full h-full bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col">
+                {formType === "resetPassword" &&<form onSubmit={submitNewCredentials} className="w-full h-full sm:h-[90%] bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col">
                     <div className="w-full flex flex-col gap-4">
                         <span className="text-4xl font-bold capitalize">Reinitialliser votre Mot de Passe</span>
                         <span className="">Veuillez saisir votre nouveau mot de passe</span>
