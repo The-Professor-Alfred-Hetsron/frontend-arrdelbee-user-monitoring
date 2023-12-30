@@ -1,14 +1,12 @@
 'use client'
 /* eslint-disable react/no-unescaped-entities */
 
-import React, { SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import Image from 'next/image'
 import { APP_NAME } from "@/constants/config";
 import { InputField } from "@/components";
 import { USER_NAME_REGEX, EMAIL_REGEX, PASSWORD_REGEX } from "@/constants/form";
-import { validateFromRegEx } from "@/utils/tools";
 import { useRouter } from "next/navigation";
-import { Span } from "next/dist/trace";
 
 type FormType = "signUp" | "signIn" | "forgotPassword" | "resetPassword" | "successRecovery"
 export default function Auth(){
@@ -25,7 +23,7 @@ export default function Auth(){
     const [password, setPassword] = useState<string>("");
     const [confirmPassword, setConfirmPassword] = useState<string>("");
 
-    const [formType, setFormType] = useState<FormType>("signUp");
+    const [formType, setFormType] = useState<FormType>("signIn");
     const [isLinkSent, setIsLinkSent] = useState<boolean>(false);
 
     const initInput = (type: FormType) => {
@@ -70,8 +68,8 @@ export default function Auth(){
         <div className="w-screen h-screen relative bg-[url(/assets/img/auth-bg-img.png)] bg-cover bg-center lg:bg-left sm:flex sm:flex-col sm:justify-center sm:items-center">
             {/* Put your Content Here For Login SignUp and Forgot Password*/}
             
-            <Image src="/assets/img/auth-logo.png" alt={`${APP_NAME} Logo`} priority className="w-[300px] lg:w-[200px] aspect-auto rounded-lg drop-shadow-2xl shadow absolute left-8 top-8 lg:left-2 lg:top-2 sm:hidden" width={200} height={200}/>
-            <Image src="/assets/img/logo.png" alt={`${APP_NAME} Logo`} priority className="w-[300px] sm:relative tablet:hidden" width={200} height={200}/>
+            <Image src="/assets/img/auth-logo.png" alt={`${APP_NAME} Logo`} priority className="w-[300px] lg:w-[200px] aspect-auto rounded-lg drop-shadow-2xl shadow absolute left-8 top-8 lg:left-2 lg:top-2 sm:hidden" width={300} height={300}/>
+            <Image src="/assets/img/logo.png" alt={`${APP_NAME} Logo`} priority className="w-[300px] sm:relative tablet:hidden" width={300} height={300}/>
 
             <div className="w-[600px] h-[750px] lg:w-screen lg:h-screen lg:p-20 sm:p-3 flex flex-col justify-center items-center absolute right-28 top-10 lg:right-0 lg:top-0">
                 
@@ -89,7 +87,7 @@ export default function Auth(){
                             <button onClick={()=>{initInput("signIn")}} className="text-secondary-yellow hover:text-primary-blue text-left">Connectez-vous</button>
                         </div>}
                         {formType === "signIn" &&<div className="flex flex-col text-left justify-start sm:items-start items-end text-sm">
-                            <span className="text-right">Vous n'avez pas de Compte?</span>
+                            <span className="text-right">Vous {"n'avez"} pas de Compte?</span>
                             <button onClick={()=>{initInput("signUp")}} className="text-secondary-yellow hover:text-primary-blue text-left">Inscrivez-vous</button>
                         </div>}
                     </div>
@@ -102,7 +100,7 @@ export default function Auth(){
                             <InputField label="Confirmez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setConfirmPassword} errorMsg={password !== confirmPassword?CONFIRM_PWD_ERROR_MSG:PASSWORD_ERROR_MSG}/>
                         </div>
                         
-                        <button type="submit" className="text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">S'Inscrire</button>
+                        <button type="submit" className="text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">{"S'Inscrire"}</button>
                     </>}
 
                     {formType === "signIn" && <>
