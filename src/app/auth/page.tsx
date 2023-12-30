@@ -88,7 +88,7 @@ export default function Auth(){
                             <button onClick={()=>{initInput("signIn")}} className="text-secondary-yellow hover:text-primary-blue text-left">Connectez-vous</button>
                         </div>}
                         {formType === "signIn" &&<div className="flex flex-col text-left justify-start sm:items-start items-end text-sm">
-                            <span className="text-right">Vous n&apos;avez pas de Compte?</span>
+                            <span className="text-right">Vous n'avez pas de Compte?</span>
                             <button onClick={()=>{initInput("signUp")}} className="text-secondary-yellow hover:text-primary-blue text-left">Inscrivez-vous</button>
                         </div>}
                     </div>
@@ -101,12 +101,12 @@ export default function Auth(){
                             <InputField label="Confirmez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setConfirmPassword} errorMsg={password !== confirmPassword?CONFIRM_PWD_ERROR_MSG:PASSWORD_ERROR_MSG}/>
                         </div>
                         
-                        <button type="submit" className="text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">S&apos;Inscrire</button>
+                        <button type="submit" className="text-center font-bold text-white bg-primary-blue rounded-lg px-8 py-3 lg:mt-2 hover:bg-secondary-yellow hover:text-primary-blue">S'Inscrire</button>
                     </>}
 
                     {formType === "signIn" && <>
                         <div className="w-full h-full flex flex-col gap-4 sm:gap-2 justify-center items-center">
-                            <InputField label="Entrez votre nom d&apos;utilisateur" placeholder="Nom d'Utilisateur" type="text" regex={USER_NAME_REGEX} setInput={setName} errorMsg={USER_NAME_ERROR_MSG}/>
+                            <InputField label="Entrez votre nom d'utilisateur" placeholder="Nom d'Utilisateur" type="text" regex={USER_NAME_REGEX} setInput={setName} errorMsg={USER_NAME_ERROR_MSG}/>
                             <InputField label="Entrez votre mot de passe" placeholder="Mot de Passe" type="password" regex={PASSWORD_REGEX} setInput={setPassword} errorMsg={PASSWORD_ERROR_MSG}/>
                             <div className="w-full flex flex-row justify-end items-end">
                                 <button onClick={()=>{initInput("forgotPassword")}} className="text-primary-blue hover:text-secondary-yellow text-left">Mot de Passe oublié?</button>
