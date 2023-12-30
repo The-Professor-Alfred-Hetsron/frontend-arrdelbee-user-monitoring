@@ -144,7 +144,7 @@ export default function Auth(){
                 </form>}
 
                 {formType === "successRecovery" &&<div className="w-full h-[60%] bg-[#FFFFFFCC] p-8 lg:p-5 rounded-2xl drop-shadow-2xl shadow flex flex-col justify-between">
-                    <div className="w-full flex flex-col gap-6">
+                    <div className="w-full sm:h-full flex flex-col gap-6 sm:justify-evenly">
                         <span className="text-4xl font-bold capitalize sm:text-3xl">Reinitialisation Reussi</span>
                         <span className="">La réinitialisation de votre mot de passe a été effectuée avec succès.</span>
                     </div>
