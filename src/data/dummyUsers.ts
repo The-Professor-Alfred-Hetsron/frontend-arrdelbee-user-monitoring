@@ -28,3 +28,9 @@ export const DUMMY_USER_PROFILE:UserProfile = {
     birthDate: "2023-08-15",
     paymentMethods: DUMMY_PAYMENT_METHODS
 }
+
+export const DUMMY_AVATAR_PATH: string = "/assets/img/avatar.png"
+
+export const DUMMY_AVATAR_FEMALE_PATH: string = "/assets/img/avatar-female.png"
+
+export const DEFAULT_AVATAR_PATH: string = "/assets/img/avatar-default.png"
