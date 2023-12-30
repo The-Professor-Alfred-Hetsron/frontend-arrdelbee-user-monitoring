@@ -9,6 +9,7 @@ export interface UserProfile{
     address: string,
     country: string,
     gender: string,
+    language: string,
     nationalID: string,
     birthDate: string,
     paymentMethods: Array<PaymentMethod>

@@ -12,12 +12,12 @@ interface PropsTypes{
     regex?: RegExp,
     errorMsg?: string,
     required?: boolean,
-    editable:boolean,
+    disabled:boolean,
     testValue?: string,
     setInput: (value:string)=>void,
 }
 
-const CustomInputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue, regex, errorMsg, required, testValue, editable, setInput}) => {
+const CustomInputField:React.FC<PropsTypes> = ({label, placeholder, type, defaultValue, regex, errorMsg, required, testValue, disabled, setInput}) => {
     const [value, setValue] = useState<string>((defaultValue!=="" && defaultValue!=undefined)? defaultValue:"")
     const [showPWD, setShowPWD] = useState<boolean>(false);
     const [showError, setShowError] = useState<boolean>(false);
@@ -40,7 +40,7 @@ const CustomInputField:React.FC<PropsTypes> = ({label, placeholder, type, defaul
             {required && <span className='text-google-red'>*</span>}
         </label>
 
-        {editable?
+        {!disabled?
             <>
                 {(type === "text" || type === "email") && <input type={type} name={type} id={label}
                     className={`w-full py-3 px-4 rounded-lg text-black peer border focus:outline-none text-base focus-within:border-google-blue ${showError && 'invalid:border-google-red invalid:text-google-red'}`}
