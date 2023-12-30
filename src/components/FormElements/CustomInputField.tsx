@@ -52,7 +52,7 @@ const CustomInputField:React.FC<PropsTypes> = ({label, placeholder, type, defaul
 
                 {type === "password" &&
                 <div className='w-full relative'>
-                    <button type='button' onClick={()=>{setShowPWD(!showPWD)}} className="text-grayToneStroke hover:text-google-blue absolute right-3 top-[18px]">
+                    <button type='button' onClick={()=>{setShowPWD(!showPWD)}} className="text-grayToneStroke hover:text-google-blue absolute right-3 top-1/2 bottom-1/2">
                         {showPWD? <FaEyeSlash size={25} className=""/> : <FaEye size={25} className=""/>}
                     </button>
                     {!showPWD?
