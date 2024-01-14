@@ -37,7 +37,7 @@ export const DUMMY_USER_PROFILE:UserProfile = {
     email: "uxeasin@gmail.com",
     phone: "+237699669966",
     address: "Melen",
-    country: "Cameroun",
+    country: "🇨🇲 - CM - Cameroun",
     gender: "Male",
     language: "English",
     nationalID: "2035123456789123456",
