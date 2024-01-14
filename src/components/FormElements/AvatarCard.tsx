@@ -19,7 +19,7 @@ const AvatarCard: React.FC<PropsTypes> = ({label, alt, required, disabled, defau
       uploadImage(event, setImage, setValue)
     }
   return (
-    <div className='w-full flex flex-col gap-1 items-start sm:items-center'>
+    <div className='w-full flex flex-col gap-1 items-center sm:items-center'>
         <label className="lg:text-sm font-medium">
             {label}
             {required && <span className='text-google-red'>*</span>}

@@ -2,17 +2,24 @@
 import React, { useState } from 'react'
 import { IoChevronDownOutline } from "react-icons/io5";
 
+interface Country {
+    name: string;
+    flag: string;
+    code: string;
+  }
+
 interface PropsTypes{
     label: string,
     placeholder: string,
     defaultValue?: string,
-    sourceList: Array<string>,
+    sourceList?: Array<string>,
+    countryList?: Array<Country>
     required?: boolean,
     permanentDisabled?:boolean,
     disabled?:boolean,
     setInput: (value:string)=>void,
 }
-const CustomDropDown:React.FC<PropsTypes> = ({label, placeholder, defaultValue, sourceList, required, permanentDisabled, disabled, setInput}) => {
+const CustomDropDown:React.FC<PropsTypes> = ({label, placeholder, defaultValue, sourceList, countryList, required, permanentDisabled, disabled, setInput}) => {
     const [value, setValue] = useState<string>((defaultValue!=="" && defaultValue!=undefined)? defaultValue:"")
 
     const handleOnChange = (val:string) => {
@@ -52,6 +59,11 @@ const CustomDropDown:React.FC<PropsTypes> = ({label, placeholder, defaultValue, 
                                         {option}
                                     </option>
                         })}
+                        {countryList?.map((country) => (
+                            <option key={country.code} value={`${country.flag} - ${country.code} - ${country.name}`}>
+                                {`${country.flag} - ${country.code} - ${country.name}`}
+                            </option>
+                        ))}
                     </select>
                 </div>:
 
