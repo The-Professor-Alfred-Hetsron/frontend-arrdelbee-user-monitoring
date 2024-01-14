@@ -1,11 +1,16 @@
+import { CVV_REGEX } from "@/constants/form";
 import React from "react";
 
 interface PaymentMethodProps {
     isVisible : boolean,
-    onClose : Function
+    onClose : Function,
+    name? : string,
+    number? : number,
+    cvv? : number,
+    expiredDate? : number
 }
 
-const AddPaymentMethod: React.FC<PaymentMethodProps> = ({ isVisible, onClose }) => {
+const AddPaymentMethod: React.FC<PaymentMethodProps> = ({ isVisible, onClose, name, number, cvv, expiredDate }) => {
     if (!isVisible) return null
     return(
         <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
@@ -39,18 +44,30 @@ const AddPaymentMethod: React.FC<PaymentMethodProps> = ({ isVisible, onClose }) 
                     <div className="flex flex-col items-center p-[10px] gap-[15px] w-[375px] h-[338px]">
                         <div className="flex flex-col items-start p-0 gap-[8px] w-full h-[76px] left-[51px] top-[204px] order-1">
                             <span className="w-[128px] h-[22px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#464748]"> Cardholder Name</span>
-                            <input type="text" name="Gender" id="" value={"Easin Arafat"} className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                            {name?
+                                <input type="text" name="Gender" id="" value={name} className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                                :
+                                <input type="text" name="Gender" id="" placeholder={"Entrer le nom"} className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                            }
                         </div>
                         <div className="flex flex-col items-start p-0 gap-[8px] w-full h-[76px] left-[51px] top-[204px] order-2">
                             <span className="w-[128px] h-[22px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#464748]"> Card Number</span>
-                            <input type="text" name="Gender" id="" value={"Easin Arafat"} className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                            {number?
+                                <input type="number" name="card-number" id="" value={number} className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                                :
+                                <input type="number" name="card-number" id="" placeholder={"1234 5678 9876 5432"} className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                            }
                         </div>
                         <div className="flex flex-row justify-center items-center p-0 gap-[15px] w-full h-full order-3 flex-grow-0">
                             <div className="flex flex-col items-start p-0 gap-[8px] w-full h-full left-[51px] top-[204px]">
-                                <input type="text" name="Nom" id="" className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                            {cvv?
+                                <input type="number" name="cvv" id="" value={cvv} pattern={`${CVV_REGEX}`} className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                                :
+                                <input type="number" name="cvv" id="" placeholder="321" className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                            }
                             </div>
                             <div className="flex flex-col items-start p-0 gap-[8px] w-full h-full left-[51px] top-[204px]">
-                                <input type="date" name="Prenom" id="" className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
+                                <input type="date" name="expired-date" id="" className="box-border w-full h-[46px] left-0 top-[30px] bg-[#FFFFFF] border-[1px] px-[10px] border-[solid] border-[#EFF0F2] rounded-[8px] font-['Ubuntu'] not-italic font-normal text-[14px] leading-[160%] text-[#6C768A] bg-[rgba(229,_234,_240,_0.8)]"/>
                             </div>
                         </div>
                         <div className="flex flex-row justify-center items-start px-0 py-[10px] w-full h-full order-4">

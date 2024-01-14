@@ -51,7 +51,9 @@ export default function ProfilePage(){
     }
 
     const editPaymentAction = (method: PaymentMethod) =>{
-
+        return(
+            <AddPaymentMethod isVisible={true} number={parseInt(method.number)} expiredDate={Date.parse(method.expriresAt? method.expriresAt : "")}  onClose={() => setAddPaymentMethod(true)}/>
+        )
     }
 
     const removePaymentAction = (index:number) =>{
