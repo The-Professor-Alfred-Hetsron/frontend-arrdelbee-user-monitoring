@@ -12,7 +12,10 @@ export interface UserProfile{
     language: string,
     nationalID: string,
     birthDate: string,
-    paymentMethods: Array<PaymentMethod>
+    paymentMethods: Array<PaymentMethod>,
+    preferedPaymentMethod: string,
+    preferedMobilePayment: string,
+    preferedPaymentCard: string
 }
 
 export type Payments = "Orange Money" | "Mobile Money" | "Visa Card" | "Master Card" | "PayPal" 

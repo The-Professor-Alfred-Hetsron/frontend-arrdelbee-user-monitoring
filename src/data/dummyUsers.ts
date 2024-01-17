@@ -42,7 +42,10 @@ export const DUMMY_USER_PROFILE:UserProfile = {
     language: "English",
     nationalID: "2035123456789123456",
     birthDate: "2023-08-15",
-    paymentMethods: DUMMY_PAYMENT_METHODS
+    paymentMethods: DUMMY_PAYMENT_METHODS,
+    preferedPaymentMethod: "Paiement Mobile",
+    preferedMobilePayment: "Orange money",
+    preferedPaymentCard: "Mastercard"
 }
 
 export const DUMMY_AVATAR_PATH: string = "/assets/img/avatar.png"
@@ -66,5 +69,8 @@ export const EMPTY_USER_PROFILE:UserProfile = {
     language: "",
     nationalID: "",
     birthDate: "",
-    paymentMethods: []
+    paymentMethods: [],
+    preferedPaymentMethod: "",
+    preferedMobilePayment: "",
+    preferedPaymentCard: ""
 }

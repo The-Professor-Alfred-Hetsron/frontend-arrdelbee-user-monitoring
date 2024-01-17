@@ -9,7 +9,7 @@ interface Country {
   }
 
 interface PropsTypes{
-    label: string,
+    label?: string,
     placeholder: string,
     defaultValue?: string,
     sourceList?: Array<string>,
@@ -19,6 +19,7 @@ interface PropsTypes{
     disabled?:boolean,
     setInput: (value:string)=>void,
 }
+
 const CustomDropDown:React.FC<PropsTypes> = ({label, placeholder, defaultValue, sourceList, countryList, required, permanentDisabled, disabled, setInput}) => {
     const [value, setValue] = useState<string>((defaultValue!=="" && defaultValue!=undefined)? defaultValue:"")
 
