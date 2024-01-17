@@ -193,6 +193,7 @@ export default function ProfilePage(){
                     />
                     <CustomDateInput
                         label="Date de Naissance"
+                        isForPayment={false}
                         disabled={disabled}
                         defaultValue={displayUserProfile.birthDate}
                         setInput={(value:string)=>{setValue(displayUserProfile,"birthDate",value)}}

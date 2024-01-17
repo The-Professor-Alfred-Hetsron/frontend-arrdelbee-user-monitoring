@@ -33,7 +33,7 @@ const AddPaymentMethod: React.FC<PaymentMethodProps> = ({ isVisible, onClose, na
     
     if (!isVisible) return null
     return(
-        <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center">
+        <div className="fixed inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center" >
             <div className="flex flex-col items-center p-[10px] gap-[10px] relative w-[800px] bg-[#F5F5F9] rounded-[20px]">
                 <div className="flex flex-row justify-center items-center p-0 gap-[10px] w-full h-[65px] bg-[#FFFFFF] rounded-[20px]">
                     <span className="flex flex-row justify-center items-center px-0 py-[2px] gap-[10px] w-full h-full font-['Ubuntu'] not-italic font-normal text-[20px] leading-[23px] text-[#34A853]">ADD PAYMENT METHOD</span>
@@ -47,7 +47,7 @@ const AddPaymentMethod: React.FC<PaymentMethodProps> = ({ isVisible, onClose, na
                         defaultValue={displayUserProfile.preferedPaymentMethod}
                         setInput={(value:string)=>{setValue(displayUserProfile,"preferedPaymentMethod",value)}}
                     />
-                < PaymentCardForm preferedPaiementMethod={displayUserProfile.preferedPaymentMethod}/>
+                < PaymentCardForm preferedPaiementMethod={displayUserProfile.preferedPaymentMethod} onClose={onClose}/>
             </div>
         </div>
     )

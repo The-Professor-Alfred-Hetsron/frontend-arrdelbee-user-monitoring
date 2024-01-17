@@ -47,5 +47,6 @@ export const PAYMENT_METHODS_IMG: Array<{type:Payments, img:string}> = [
 export interface PaymentMethod{
     type: Payments,
     number: string,
+    cvv?: string,
     expriresAt?: string
 }
