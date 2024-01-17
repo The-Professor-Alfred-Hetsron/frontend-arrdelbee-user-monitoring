@@ -1,4 +1,4 @@
-export default interface TabLinkType{
+export type TabLinkType = {
     label: string,
     href: string
 }

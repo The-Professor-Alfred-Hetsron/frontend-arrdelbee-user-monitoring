@@ -1,4 +1,4 @@
-import TabLinkType from "@/types/tabLinks";
+import { TabLinkType } from "@/types/tabLinks";
 
 export const USER_PATH:string = "/dashboard/utilisateur" 
 export const USER_TAB_LINKS:Array<TabLinkType> = [

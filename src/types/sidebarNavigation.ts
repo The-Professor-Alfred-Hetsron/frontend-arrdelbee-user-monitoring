@@ -1,6 +1,6 @@
 import React from 'react'
 
-export interface MenuItemType {
+export type MenuItemType = {
     label: string,
     href: string,
     icon: React.ReactNode

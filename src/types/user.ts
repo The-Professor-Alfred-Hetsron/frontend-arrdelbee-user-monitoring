@@ -1,9 +1,11 @@
-export interface UserProfile{
+import { USER_GROUP } from "@/constants/user"
+
+export interface GenericUserProfile {
+    id:string,
     firstName: string,
     secondName: string,
     post: string,
-    group: string,
-    password: string,
+    group: USER_GROUP,
     email: string,
     phone: string,
     address: string,
@@ -12,6 +14,10 @@ export interface UserProfile{
     language: string,
     nationalID: string,
     birthDate: string,
+}
+
+export interface UserProfile extends GenericUserProfile{
+    password: string,
     paymentMethods: Array<PaymentMethod>
 }
 
@@ -41,7 +47,7 @@ export const PAYMENT_METHODS_IMG: Array<{type:Payments, img:string}> = [
     }
 ]
 
-export interface PaymentMethod{
+export type PaymentMethod = {
     type: Payments,
     number: string,
     expriresAt?: string
