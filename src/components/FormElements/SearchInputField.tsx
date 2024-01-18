@@ -3,10 +3,11 @@ import React, { useState } from 'react'
 import { IoSearch } from "react-icons/io5";
 
 interface PropsTypes{
+    placeholder: string,
     setInput: (value:string)=>void,
 }
 
-const SearchInputField:React.FC<PropsTypes> = ({setInput}) => {
+const SearchInputField:React.FC<PropsTypes> = ({placeholder, setInput}) => {
 
     const [value, setValue] = useState<string>("")
 
@@ -24,7 +25,7 @@ const SearchInputField:React.FC<PropsTypes> = ({setInput}) => {
             type="search"
             name="search-user"
             className='w-full focus:outline-none'
-            placeholder='Rechercher...'
+            placeholder={placeholder}
             value={value}
             onChange={(e)=>{handleOnChange(e.target.value)}}
         />

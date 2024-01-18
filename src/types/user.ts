@@ -14,6 +14,7 @@ export interface GenericUserProfile {
     language: string,
     nationalID: string,
     birthDate: string,
+    subscribedDate: string,
 }
 
 export interface UserProfile extends GenericUserProfile{

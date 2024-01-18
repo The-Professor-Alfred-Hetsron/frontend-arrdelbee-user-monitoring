@@ -30,13 +30,13 @@ const CustomDataTable:React.FC<PropsTypes> = ({filterList, headerList, dataList,
     console.log(value)
   }
 
-  const GroupBadgeTemplate = (rowData:any) =>{
-    const BADGE_STYLE = USER_GROUPS_BADGES.find((group)=>{
-      return group.groupLabel === rowData.group
-    })
+  // const GroupBadgeTemplate = (rowData:any) =>{
+  //   const BADGE_STYLE = USER_GROUPS_BADGES.find((group)=>{
+  //     return group.groupLabel === rowData.group
+  //   })
 
-    return <UserGroupBadge {...BADGE_STYLE}/>
-  }
+  //   return <UserGroupBadge {...BADGE_STYLE}/>
+  // }
 
   return (
     <div className='w-full flex flex-col gap-3'>
@@ -73,7 +73,7 @@ const CustomDataTable:React.FC<PropsTypes> = ({filterList, headerList, dataList,
                         field={title.field}
                         header={title.header}
                         style={title.minWidth}
-                        body={GroupBadgeTemplate}
+                        // body={GroupBadgeTemplate}
                         filter filterPlaceholder={`Rechercher par ${title.header}`}
                       >
                       </Column>

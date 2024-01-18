@@ -22,7 +22,7 @@ export const USER_DATATABLE_HEADERS: Array<HeaderDataTableType> = [
     {
         field:"email",
         header:"Email",
-        minWidth:{width: '200px'},
+        minWidth:{width: '300px'},
         sortable:true
     },
     {
@@ -46,7 +46,7 @@ export const USER_DATATABLE_HEADERS: Array<HeaderDataTableType> = [
     {
         field:"group",
         header:"Groupe",
-        minWidth:{width: '200px'},
+        minWidth:{width: '300px'},
         sortable:false
     }
 ]

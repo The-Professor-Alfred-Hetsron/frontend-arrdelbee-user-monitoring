@@ -1,9 +1,27 @@
 import { UserDataTableType } from "@/types/dataTables";
 const tempDate = `${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`
 
-const tempArray = Array(20).fill({
+const tempArray1 = Array(5).fill({
     id: "ffkftfgfkf",
-    firstName: "string",
+    firstName: "stringhk",
+    secondName: "string",
+    post: "string",
+    group: "Agent ArrdelBee",
+    email: "string@gmail.com",
+    phone: "+237string",
+    address: "string",
+    country: "string",
+    gender: "male",
+    language: "string",
+    nationalID: "string",
+    birthDate: "string",
+    lastActifDate: tempDate,
+    subscribedDate: tempDate
+})
+
+const tempArray2 = Array(5).fill({
+    id: "ffkftfgfkf",
+    firstName: "stringtyt",
     secondName: "string",
     post: "string",
     group: "Classique",
@@ -11,14 +29,35 @@ const tempArray = Array(20).fill({
     phone: "+237string",
     address: "string",
     country: "string",
-    gender: "string",
+    gender: "female",
     language: "string",
     nationalID: "string",
     birthDate: "string",
-    lastActifDate: tempDate
+    lastActifDate: tempDate,
+    subscribedDate: tempDate
 })
 
-export const USER_DATATABLE: Array<UserDataTableType> = tempArray.map((elt:UserDataTableType, i:number)=>{
+const tempArray3 = Array(3).fill({
+    id: "ffkftfgfkf",
+    firstName: "stringhg",
+    secondName: "string",
+    post: "string",
+    group: "Acteur PTF",
+    email: "string@gmail.com",
+    phone: "+237string",
+    address: "string",
+    country: "string",
+    gender: "male",
+    language: "string",
+    nationalID: "string",
+    birthDate: "string",
+    lastActifDate: tempDate,
+    subscribedDate: tempDate
+})
+
+const globalArray = [...tempArray1, ...tempArray2, ...tempArray3]
+
+export const USER_DATATABLE: Array<UserDataTableType> = globalArray.map((elt:UserDataTableType, i:number)=>{
     return {...elt, id: `${i}`, firstName:elt.firstName+i, secondName:elt.secondName+i}
 })
 // [

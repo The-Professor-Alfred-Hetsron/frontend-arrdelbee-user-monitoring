@@ -7,6 +7,10 @@ export {default as TableCardFilters} from "./TableCardFilters"
 export {default as CustomDataTable} from "./CustomDataTable"
 export {default as AddPaymentMethod} from "./AddPaymentMethod"
 export {default as UserGroupBadge} from "./UserGroupBadge"
+export {default as Modal} from "./Modal"
+export {default as DataTableActionBtn} from "./DataTableActionBtn"
+// export {default as ViewDetailsBtn} from "./ViewDetailsBtn"
+
 
 export {default as InputField } from "./FormElements/InputField"
 export {default as AvatarCard } from "./FormElements/AvatarCard"
