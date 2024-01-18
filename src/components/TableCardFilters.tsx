@@ -33,7 +33,7 @@ const TableCardFilters:React.FC<PropsTypes> = ({filterList, setFilter}) => {
         <div className="flex flex-wrap gap-2">
             {
                 filterList.map((filter:DataTableFilterType, index:number)=>{
-                    return <button type="button" onClick={()=>{handleOnFilterSelect(filter.value)}} className={(selectedFilter === filter.value)?"rounded-3xl px-2 py-1 bg-white border-2 border-secondary-yellow text-black font-bold":"rounded-3xl px-2 py-1 bg-white border-2 border-grayTone3 text-grayTone3"}>
+                    return <button key={index} type="button" onClick={()=>{handleOnFilterSelect(filter.value)}} className={(selectedFilter === filter.value)?"rounded-3xl px-2 py-1 bg-white border-2 border-secondary-yellow text-black font-bold":"rounded-3xl px-2 py-1 bg-white border-2 border-grayTone3 text-grayTone3"}>
                         {filter.label}
                     </button>
                 })

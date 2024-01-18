@@ -107,7 +107,7 @@ export default function Manage(){
                 setFilter={sortArrayByFilter}
             />
 
-            <div className="sm:min-h-[300px] pr-2 pb-2 flex flex-col gap-2 overflow-auto rounded-scrollbar">
+            <div className="sm:min-h-[400px] pr-2 pb-2 flex flex-col gap-2 overflow-auto rounded-scrollbar">
                 {/* custom Data Table, PrimeReact was too hard to use*/}
                 <div className="w-[2000px] sticky top-0 p-2 rounded-lg border-2 border-grayTone3 bg-table-header-white text-grayTone3 font-bold flex gap-1 justify-between">
                     {/* Data Table Header */}
