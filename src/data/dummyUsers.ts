@@ -29,10 +29,11 @@ const DUMMY_PAYMENT_METHODS:Array<PaymentMethod> =[
 ]
 
 export const DUMMY_USER_PROFILE:UserProfile = {
+    id: "f24f",
     firstName: "Easin",
     secondName: "Arafat",
     post: "Ministère de la Santé",
-    group: "User",
+    group: "Abonné",
     password: "password",
     email: "uxeasin@gmail.com",
     phone: "+237699669966",
@@ -42,7 +43,8 @@ export const DUMMY_USER_PROFILE:UserProfile = {
     language: "English",
     nationalID: "2035123456789123456",
     birthDate: "2023-08-15",
-    paymentMethods: DUMMY_PAYMENT_METHODS
+    paymentMethods: DUMMY_PAYMENT_METHODS,
+    subscribedDate: "2023-08-15"
 }
 
 export const DUMMY_AVATAR_PATH: string = "/assets/img/avatar.png"
@@ -53,10 +55,11 @@ export const DEFAULT_AVATAR_PATH: string = "/assets/img/avatar-default.png"
 
 
 export const EMPTY_USER_PROFILE:UserProfile = {
+    id: "",
     firstName: "",
     secondName: "",
     post: "",
-    group: "",
+    group: "Abonné",
     password: "",
     email: "",
     phone: "",
@@ -66,5 +69,6 @@ export const EMPTY_USER_PROFILE:UserProfile = {
     language: "",
     nationalID: "",
     birthDate: "",
-    paymentMethods: []
+    paymentMethods: [],
+    subscribedDate: ""
 }
