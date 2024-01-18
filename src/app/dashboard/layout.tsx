@@ -16,10 +16,10 @@ export default function DashboardLayout({
     const [ isSideVisible, setSideVisibility ] = useState(true)
 
     return(
-      <div className="w-screen h-screen flex flex-row p-3 gap-4">
+      <div className="w-screen h-screen flex flex-row p-3 gap-4 sm:overflow-y-auto">
         {isSideVisible && <SideBar navToogler={setSideVisibility}/>}
 
-        <div className="w-full flex flex-col items-start gap-4">
+        <div className="w-full px-1 flex flex-col items-start gap-4 laptop:overflow-hidden">
           <Image src="/assets/img/bee-hexagons.png" alt={`${APP_NAME} Hexagons`} priority width={200} height={200} className='w-[300px] absolute right-0 top-12 -z-10'/>
           <Header navStatus={isSideVisible} navToogler={setSideVisibility}/>
           {children}

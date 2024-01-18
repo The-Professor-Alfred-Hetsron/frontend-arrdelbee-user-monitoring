@@ -1,6 +1,13 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { APP_NAME, APP_TAB_NAME, APP_DESCRIPTION, THEME_COLOR, KEYWORDS } from '@/constants/config'
+import { PrimeReactProvider } from 'primereact/api';
+//theme
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+//core
+import "primereact/resources/primereact.min.css";
+//icons
+import "primeicons/primeicons.css";
 
 export const metadata: Metadata = {
   applicationName:APP_NAME,
@@ -31,7 +38,11 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#da532c"/>
         <meta name="theme-color" content="#356BB3"/>
       </head>
-      <body className="m-0 p-0 font-poppins relative bg-background-white selection:bg-tertiary-lightYellow selection:text-primary-blue">{children}</body>
+      <body className="m-0 p-0 font-poppins relative bg-background-white selection:bg-tertiary-lightYellow selection:text-primary-blue">
+        <PrimeReactProvider>
+          {children}
+        </PrimeReactProvider>
+      </body>
     </html>
   )
 }

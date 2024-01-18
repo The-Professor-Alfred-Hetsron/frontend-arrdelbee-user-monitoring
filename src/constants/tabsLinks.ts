@@ -1,4 +1,4 @@
-import TabLinkType from "@/types/tabLinks";
+import { TabLinkType } from "@/types/tabLinks";
 
 export const USER_PATH:string = "/dashboard/utilisateur" 
 export const USER_TAB_LINKS:Array<TabLinkType> = [
@@ -10,10 +10,10 @@ export const USER_TAB_LINKS:Array<TabLinkType> = [
         label: "Gestion",
         href: `${USER_PATH}/gestion`
     },
-    {
-        label: "Groupe",
-        href: `${USER_PATH}/groupe`
-    }
+    // {
+    //     label: "Groupe",
+    //     href: `${USER_PATH}/groupe`
+    // }
 ]
 
 export const MONITORING_PATH:string = "/dashboard/monitoring" 

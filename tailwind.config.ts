@@ -29,6 +29,12 @@ const config: Config = {
         'background-white': '#F6F6F8',
         'logo-yellow':'#F69319',
         'white-layout': '#E5EAF0CC',
+        'table-header-white': '#F9FCFF',
+        'light-green': '#E8FBEF',
+        'brown': '#9E896A',
+        'light-brown': '#F8EDDD',
+        'accent-purple': '#6F52EA',
+        'light-purple': '#E0D9FD'
       },
       dropShadow: {
         '3xl': '0 35px 35px rgba(0, 0, 0, 0.25)',

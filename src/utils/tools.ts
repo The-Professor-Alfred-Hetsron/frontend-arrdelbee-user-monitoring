@@ -1,6 +1,7 @@
 
 import { Dispatch, SetStateAction } from "react";
 
+
 export const validateFromRegEx = (value:string, regex: RegExp, setEntity:((value:SetStateAction<string>)=>void) | ((value:string)=>void)) => {
     const IS_VALID = regex.test(value);
     console.log(IS_VALID)
@@ -26,3 +27,11 @@ export const uploadImage = (event: React.ChangeEvent<HTMLInputElement>, setImage
     setPreviewImage(URL.createObjectURL(selectedFiles?.[0]));
     setImage(URL.createObjectURL(selectedFiles?.[0]));
 }
+
+
+{/* <CustomDataTable
+                filterList={USER_FILTERS}
+                headerList={USER_DATATABLE_HEADER}
+                dataList={USER_DATATABLE}
+                setSelectedData={setSelectedUsers}
+            /> */}
