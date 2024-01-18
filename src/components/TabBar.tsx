@@ -2,7 +2,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import TabLinkType from '@/types/tabLinks';
+import {TabLinkType} from '@/types/tabLinks';
 import { FaChevronRight } from "react-icons/fa6";
 import '@/app/globals.css'
 interface PropsTypes{
