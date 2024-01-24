@@ -23,7 +23,12 @@ const PaymentCard:React.FC<PropsTypes> = ({method, disabled, editAction, removeA
             <Image src={`${getImageFromType(type)}`} alt={type} className='w-[100px] aspect-video rounded-md' priority width={200} height={200}/>
             <div className="flex flex-col gap-1">
                 <span className="font-bold">...{number.substring(number.length-3)}</span>
-                <span className="text-grayTone2 text-xs">Expire Le {month}/{year}</span>
+                {expriresAt?
+                    <span className="text-grayTone2 text-xs">Expire Le {month}/{year}</span>
+                    :
+                    <span className="text-grayTone2 text-xs">{type}</span>
+                }
+                
             </div>
         </div>
 

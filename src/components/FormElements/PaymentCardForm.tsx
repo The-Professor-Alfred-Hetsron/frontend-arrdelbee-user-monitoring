@@ -1,6 +1,6 @@
-import { CVV_REGEX } from "@/constants/form";
+import { CARD_NUMBER_REGEX, CVV_REGEX, PHONE_REGEX } from "@/constants/form";
 import React, { useState } from "react";
-import { CustomDateInput, CustomDropDown, CustomInputField } from "..";
+import { CustomDateInput, CustomDropDown, CustomInputField, InputField } from "..";
 import { CARD_PAYMENT, MOBILE_PAYMENT } from "@/constants/user";
 import { DUMMY_USER_PROFILE } from "@/data/dummyUsers";
 import { PaymentMethod, Payments, UserProfile } from "@/types/user";
@@ -19,13 +19,17 @@ const PaymentCardForm: React.FC<PaymentMethodProps> = ({ preferedPaiementMethod,
     const [apiUserProfile, setApiUserProfile] = useState<UserProfile>({...DUMMY_USER_PROFILE});
     const [displayUserProfile, setDisplayUserProfile] = useState<UserProfile>({...apiUserProfile});
     const [hasChanged, setHasChanged] = useState<boolean>(false);
+
+    const [Cvv, setCVV] = useState<string>("");
+    const [Number, setNumber] = useState<string>("");
+    const [ExpiresAt, setExpiresAt] = useState<string>("");
+
     const [paymentCard, setPaymentCard] = useState<PaymentMethod>({
-        cvv: "123",
-        number: "00237 698 765 432",
-        expriresAt: "2023-06",
+        cvv: "",
+        number: "",
+        expriresAt: "",
         type: "Master Card"
     });
-
 
     const setValue = (source:any, key:string, newValue:any) => {
         updateDataFromKey(source,key,newValue)
@@ -39,6 +43,8 @@ const PaymentCardForm: React.FC<PaymentMethodProps> = ({ preferedPaiementMethod,
     const addPaymentAction = (paymentMethod: PaymentMethod, value : Payments) =>{
         let tempUserProfile: UserProfile = {...displayUserProfile}
         paymentMethod.type = value;
+        paymentMethod.cvv = Cvv? Cvv: ""
+        paymentMethod.number = Number? Number: ""
         console.log(paymentMethod)
         tempUserProfile.paymentMethods.push(paymentMethod)
         console.log(tempUserProfile.paymentMethods)
@@ -94,14 +100,11 @@ const PaymentCardForm: React.FC<PaymentMethodProps> = ({ preferedPaiementMethod,
                 </div>
                 
                 <div className="flex flex-col items-start p-0 gap-[8px] w-full left-[51px] top-[204px] order-2">
-                    <CustomInputField
-                        label="Numero de téléphone"
-                        required
-                        placeholder="Entrez votre numero"
-                        type="text"
-                        disabled={false}
-                        setInput={(value:string)=>{setValue(paymentCard,"number",value)}}
-                            />
+                    <InputField
+                            label="Numero de téléphone"
+                            placeholder="Entrez votre numero"
+                            type="text"
+                            setInput={setNumber} regex={PHONE_REGEX} errorMsg={"Entrer un numero valide"}                            />
                 </div>
                 <div className="flex flex-row justify-center items-start px-0 py-[10px] w-full order-4">
                     <button onClick={paymentCard? (displayUserProfile.preferedMobilePayment == "Mobile money"? () => {addPaymentAction(paymentCard, "Mobile Money")} : () => {addPaymentAction(paymentCard, "Orange Money")}) :() => null} className="flex flex-row justify-center items-center px-[28px] py-[14px] gap-[8px] w-full bg-[#356BB3] rounded-[15px]"><span className="font-['Ubuntu'] not-italic font-medium text-[20px] leading-[120%] text-[#FFFFFF]">Confirmer</span></button>
@@ -148,24 +151,21 @@ const PaymentCardForm: React.FC<PaymentMethodProps> = ({ preferedPaiementMethod,
                     />
                 </div>
                 <div className="flex flex-col items-start p-0 gap-[8px] w-full left-[51px] top-[204px] order-2">
-                    <CustomInputField
+                    <InputField
                         label="Numero de Carte"
-                        required
                         placeholder="Entrez votre numero"
                         type="text"
-                        disabled={false}
-                        setInput={(value:string)=>{setValue(paymentCard,"number",value)}}
-                            />
+                        setInput={setNumber} regex={CARD_NUMBER_REGEX} errorMsg={"Entrer un numero de carte valide"}                            />
                 </div>
                 <div className="flex flex-row justify-center items-center p-0 gap-[15px] w-full order-3 flex-grow-0">
                     <div className="flex flex-col items-start p-0 gap-[8px] w-full h-full left-[51px] top-[204px]">
-                        <CustomInputField
+                        <InputField
                             label="cvv"
-                            required
                             placeholder="CVV"
                             type="text"
-                            disabled={false}
-                            setInput={(value:string)=>{setValue(paymentCard,"cvv",value)}}
+                            regex={CVV_REGEX}
+                            errorMsg="Entrer uniquement 3 chiffres entre 0 et 9"
+                            setInput={setCVV}
                                 />
                     </div>
                     <div className="flex flex-col items-start p-0 gap-[8px] w-full h-full left-[51px] top-[204px]">

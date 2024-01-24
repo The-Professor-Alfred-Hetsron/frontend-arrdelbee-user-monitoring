@@ -4,12 +4,12 @@ const DUMMY_PAYMENT_METHODS:Array<PaymentMethod> =[
     {
         type: "Orange Money",
         number: "+237699669966",
-        expriresAt: "2030-12-24"
+        expriresAt: ""
     },
     {
         type: "Mobile Money",
         number: "+237675669957",
-        expriresAt: "2030-12-24"
+        expriresAt: ""
     },
     {
         type: "Visa Card",
