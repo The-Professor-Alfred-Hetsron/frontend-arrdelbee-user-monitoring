@@ -53,7 +53,14 @@ export default function ProfilePage(){
 
     const editPaymentAction = (method: PaymentMethod) =>{
         return(
-            <AddPaymentMethod isVisible={true} number={parseInt(method.number)} expiredDate={Date.parse(method.expriresAt? method.expriresAt : "")}  onClose={() => setAddPaymentMethod(true)}/>
+            <AddPaymentMethod
+                isVisible={true}
+                number={parseInt(method.number)}
+                displayUserProfile={displayUserProfile}
+                setValue={(value:string)=>{setValue(displayUserProfile,"preferedPaymentMethod",value)}}
+                expiredDate={Date.parse(method.expriresAt? method.expriresAt : "")}  
+                onClose={() => setAddPaymentMethod(true)}
+            />
         )
     }
 
@@ -222,10 +229,12 @@ export default function ProfilePage(){
                                 })
                             }
                         </div>
-                        {!disabled && <div id="payment-modal" className="flex flex-row justify-left items-center p-0 gap-[10px] w-full h-[26px] order-2 flex-grow-0 ">
-                            <img src="/assets/img/addPaymentMethods/roundPayment.png" alt="add payment" />
-                            <button className="cursor-pointer h-[22px] lg:text-sm font-mediul text-[14px] leading-[160%] text-[#FBB601] text-left" onClick={() => setAddPaymentMethod(true)}>ADD PAYMENT METHOD</button>
-                        </div>}
+                        {!disabled &&
+                            <div id="payment-modal" className="flex flex-row justify-left items-center p-0 gap-[10px] w-full h-[26px] order-2 flex-grow-0 ">
+                                <img src="/assets/img/addPaymentMethods/roundPayment.png" alt="add payment" />
+                                <button className="cursor-pointer h-[22px] lg:text-sm font-mediul text-[14px] leading-[160%] text-[#FBB601] text-left uppercase" onClick={() => setAddPaymentMethod(true)}>Ajouter un Mode de Paiement</button>
+                            </div>
+                        }
                     </div>
     
                     <div className="w-full flex flex-row justify-end">
@@ -239,7 +248,12 @@ export default function ProfilePage(){
                     </div>
                 </div>
             </div>
-            <AddPaymentMethod isVisible={showAddPaymentMethod} onClose={() => setAddPaymentMethod(false)}/>
+            <AddPaymentMethod
+                isVisible={showAddPaymentMethod}
+                displayUserProfile={displayUserProfile}
+                setValue={(value:string)=>{setValue(displayUserProfile,"preferedPaymentMethod",value)}}
+                onClose={() => setAddPaymentMethod(false)}
+            />
         </Fragment>
     )
 }

@@ -1,8 +1,14 @@
 'use client'
 import { useRouter } from "next/navigation"
+import { useEffect } from "react";
 
 export default function Root() {
   const router = useRouter()
+
+  useEffect(() => {
+        router.push("/auth")
+  }, []);
+
   return (
     <main className="min-w-screen min-h-screen flex flex-col gap-8 items-center justify-center">
       Landing Page

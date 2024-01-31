@@ -19,7 +19,10 @@ export interface GenericUserProfile {
 
 export interface UserProfile extends GenericUserProfile{
     password: string,
-    paymentMethods: Array<PaymentMethod>
+    paymentMethods: Array<PaymentMethod>,
+    preferedPaymentMethod: string,
+    preferedMobilePayment: string,
+    preferedPaymentCard: string
 }
 
 export type Payments = "Orange Money" | "Mobile Money" | "Visa Card" | "Master Card" | "PayPal" 
@@ -51,5 +54,6 @@ export const PAYMENT_METHODS_IMG: Array<{type:Payments, img:string}> = [
 export type PaymentMethod = {
     type: Payments,
     number: string,
+    cvv?: string,
     expriresAt?: string
 }

@@ -52,3 +52,18 @@ export const LANGUAGES: Array<string> = [
     "English",
     "Français"
 ]
+
+export const PAYMENT_METHOD : Array<string> = [
+    "Paiement Mobile",
+    "Paiement Bancaire"
+]
+
+export const MOBILE_PAYMENT : Array<string> = [
+    "Orange Money",
+    "Mobile Money"
+]
+
+export const CARD_PAYMENT : Array<string> = [
+    "Mastercard",
+    "Visa"
+]

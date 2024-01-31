@@ -3,14 +3,16 @@ import React, { useState } from 'react'
 
 interface PropsTypes{
     label: string,
+    isForPayment?: boolean,
     defaultValue?: string,
     required?: boolean,
     disabled?:boolean,
     setInput: (value:string)=>void,
 }
-const CustomDateInput:React.FC<PropsTypes> = ({label, defaultValue,required, disabled,setInput }) => {
-    const TODAY = `${new Date().getFullYear()}-${("0" + (new Date().getMonth() + 1)).slice(-2)}-${("0" + new Date().getDate()).slice(-2)}`
-    const [value, setValue] = useState<string>((defaultValue!=="" && defaultValue!=undefined)? defaultValue:TODAY)
+const CustomDateInput:React.FC<PropsTypes> = ({label, isForPayment, defaultValue,required, disabled,setInput }) => {
+    const TODAY_MONTH = `${new Date().getFullYear()}-${("0" + (new Date().getMonth() + 1)).slice(-2)}`
+    const TODAY = `${new Date().getFullYear()}-${("0" + (new Date().getMonth() + 1)).slice(-2)}-${("0" + new Date().getDate()).slice(-2)}`  
+    const [value, setValue] = useState<string>((defaultValue!=="" && defaultValue!=undefined)? defaultValue: isForPayment? TODAY_MONTH:TODAY)
     
     const handleOnChange = (val:string) => {
         if(val!=value){
@@ -26,8 +28,14 @@ const CustomDateInput:React.FC<PropsTypes> = ({label, defaultValue,required, dis
                 {required && <span className='text-google-red'>*</span>}
             </label>
 
-            {!disabled?
+            {!disabled? !isForPayment?
                 <input type="date" name={label} id={label}
+                    className="w-full py-3 px-4 rounded-lg text-black peer border focus:outline-none text-base focus-within:border-google-blue"
+                    value={value}
+                    required={required}
+                    onChange={(e)=>{handleOnChange(e.target.value)}}
+                />:
+                <input type='month' name={label} id={label}
                     className="w-full py-3 px-4 rounded-lg text-black peer border focus:outline-none text-base focus-within:border-google-blue"
                     value={value}
                     required={required}

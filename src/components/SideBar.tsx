@@ -24,11 +24,13 @@ const SideBar:React.FC<PropsType> = ({navToogler}) => {
             label: "Accueil",
             href: "/dashboard",
             icon: <MdHome size={20}/>
-        },{
+        },
+        {
             label: "Utilisateur",
             href: USER_PATH,
             icon: <FaUsers size={20}/>
-        },{
+        },
+        {
             label: "Monitoring",
             href: MONITORING_PATH,
             icon: <MdMonitorHeart size={20}/>
